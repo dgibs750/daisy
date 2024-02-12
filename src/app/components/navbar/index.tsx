@@ -57,9 +57,9 @@ const NavBar = () => {
                     <C.NavSelection>Anton</C.NavSelection>
                 </Link>
                 <Tooltip id="unavailable-tooltip" place="bottom" />
-                {/* <Link href={'https://google.com'} target="_blank" style={{ textDecoration: 'none' }}>
+                <Link href={'https://airtable.com/app7iJdlG5RS4GicU/shrnTwmhJTBJIVHz7'} target="_blank" style={{ textDecoration: 'none' }}>
                     <C.ApplyButton>Apply Here</C.ApplyButton>
-                </Link> */}
+                </Link>
             </C.HeaderButtonContainer>
         </C.Header>
     )

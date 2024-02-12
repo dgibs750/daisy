@@ -67,6 +67,7 @@ export const burgerStyles = {
     },
     bmMenuWrap: {
       position: 'fixed',
+      top: '0px',
       height: '100%',
     },
     bmMenu: {

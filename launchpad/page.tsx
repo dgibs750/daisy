@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import * as db from '@/utils/db-connection';
 import CollectionsCard from "@/app/components/collectionsCard";
 import Link from "next/link";
-import NavBar from "../components/navbar";
+import NavBar from "@/app/components/navbar";
     
 const Launchpad = () => {
     const [data, setData] = useState([]);
