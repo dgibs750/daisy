@@ -28,9 +28,9 @@ const MobileNavBar = () => {
                 >
                     <C.NavSelection>Anton</C.NavSelection>
                 </Link>
-                {/* <Link href={'https://google.com'} target="_blank" style={{ textDecoration: 'none' }}>
+                <Link href={'https://airtable.com/app7iJdlG5RS4GicU/shrnTwmhJTBJIVHz7'} target="_blank" style={{ textDecoration: 'none' }}>
                     <C.ApplyButton>Apply Here</C.ApplyButton>
-                </Link> */}
+                </Link>
             </Menu>
         </C.Header>
     )

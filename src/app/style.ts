@@ -173,7 +173,7 @@ export const Desc = styled.h3`
     font-weight: 400;
     font-size:22px;
     line-height:100%;
-    margin-top:-30px;
+    margin-top:-10px;
 
     @media (max-width: 800px) {
         font-size:3vw;

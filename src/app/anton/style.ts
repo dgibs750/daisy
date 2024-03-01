@@ -5,25 +5,25 @@ import { color } from "@/styles/theme"
 import { Hex2Rgba } from "@/utils/helpers"
 
 export const Home = styled.div`
-    background-color: #18191A;
+    background-color: ${color.bg};
     min-height:100vh;
     height:100%;
 `
 
 export const BgPink = styled.div`
     position:absolute;
-    bottom:0;
+    top:0;
+    left:-20%;
     z-index:0;
-    width:100%;
-    height:25%;
+    width:555px;
+    height:55%;
     display:flex;
     justify-content:center;
     align-items:flex-start;
     overflow:hidden;
-    border-radius: 0px;
-    background: rgba(189, 45, 135, .55);
+    border-radius: 555px;
+    background: rgba(189, 45, 135, .65);
     filter: blur(247px);
-    
 
     & svg{
         position:absolute;
@@ -31,6 +31,42 @@ export const BgPink = styled.div`
         height:100%;
         width:100%;
         color:${Hex2Rgba("#DA2284", .32)}
+    }
+
+    @media (max-width: 768px) {
+        filter: blur(100px);
+        width:85%;
+        height:50%;
+    }
+`
+
+export const BgBlue = styled.div`
+    position:absolute;
+    top:35%;
+    left:10%;
+    z-index:0;
+    width:555px;
+    height:55%;
+    display:flex;
+    justify-content:center;
+    align-items:flex-start;
+    overflow:hidden;
+    border-radius: 555px;
+    background: rgba(5, 0, 255, .35);
+    filter: blur(247px);
+
+    & svg{
+        position:absolute;
+        top:0;
+        height:100%;
+        width:100%;
+        color:${Hex2Rgba("#DA2284", .32)}
+    }
+
+    @media (max-width: 768px) {
+        filter: blur(100px);
+        width:85%;
+        height:50%;
     }
 `
 

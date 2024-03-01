@@ -25,6 +25,7 @@ const Anton = () => {
     return (
         <C.Home>
             <C.BgPink></C.BgPink>
+            <C.BgBlue></C.BgBlue>
             <C.Container>
                 {isMobile ? <MobileNavBar/>
                     : <NavBar/>
