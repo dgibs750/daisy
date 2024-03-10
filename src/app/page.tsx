@@ -34,7 +34,6 @@ const Home = () => {
                     <C.TitleContainer>
                         <C.Title>
                             <C.GradientText>For Creators,</C.GradientText> By Creators
-                            {/* <C.Star src="/images/Star1.svg"></C.Star> */}
                         </C.Title>
                     </C.TitleContainer>
                     <C.Desc className={roboto.className}>Optimized projects from start to finish.</C.Desc>

@@ -19,7 +19,12 @@ const MobileNavBar = () => {
                 <C.Logo src="/images/DAISY_Wordmark-16.svg" />
             </Link>
             <Menu right styles={ styles } customBurgerIcon={ <FontAwesomeIcon color={color.primary}icon={faBars} /> }>
-                <C.NavSelection>Launchpad</C.NavSelection>
+                <Link
+                    href={'/launchpad'}
+                    style={{ textDecoration: 'none' }}
+                >
+                    <C.NavSelection>Launchpad</C.NavSelection>
+                </Link>
                 <C.NavSelection>Auctions</C.NavSelection>
                 <C.NavSelection>Generator</C.NavSelection>
                 <Link

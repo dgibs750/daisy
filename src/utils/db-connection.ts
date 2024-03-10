@@ -10,8 +10,7 @@ const pool = mariadb.createPool({
     user: config.DB_USER,
     password: config.DB_PASSWORD,
     database: config.DB_NAME,
-    connectionLimit: 100,
-    idleTimeout: 0
+    connectionLimit: 10,
     });
 
 export const submit = async () => {

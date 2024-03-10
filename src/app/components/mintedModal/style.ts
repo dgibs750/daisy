@@ -31,7 +31,7 @@ export const Dialog = styled.div`
     padding-top:0px;
     border-radius: 16px;
     backdrop-filter: blur(20px);
-    background: linear-gradient(180deg, #15232D 0%, #0A141B 100%);
+    background-color: ${color.bg};
     overflow-y: auto;
     display:flex;
     flex-direction:column;
@@ -42,6 +42,66 @@ export const Dialog = styled.div`
     overflow:auto;
     margin:auto;
     box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.75); 
+`
+
+export const BgPink = styled.div`
+    position:absolute;
+    top:0;
+    left:0%;
+    z-index:0;
+    width:100px;
+    height:55%;
+    display:flex;
+    justify-content:center;
+    align-items:flex-start;
+    overflow:hidden;
+    border-radius: 555px;
+    background: rgba(189, 45, 135, 1);
+    filter: blur(100px);
+
+    & svg{
+        position:absolute;
+        top:0;
+        height:100%;
+        width:100%;
+        color:${Hex2Rgba("#DA2284", .32)}
+    }
+
+    @media (max-width: 768px) {
+        filter: blur(100px);
+        width:85%;
+        height:50%;
+    }
+`
+
+export const BgBlue = styled.div`
+    position:absolute;
+    bottom:0%;
+    left:15%;
+    z-index:0;
+    width:100px;
+    height:55%;
+    display:flex;
+    justify-content:center;
+    align-items:flex-start;
+    overflow:hidden;
+    border-radius: 555px;
+    background: rgba(5, 0, 255, .7);
+    filter: blur(100px);
+
+    & svg{
+        position:absolute;
+        top:0;
+        height:100%;
+        width:100%;
+        color:${Hex2Rgba("#DA2284", .32)}
+    }
+
+    @media (max-width: 768px) {
+        filter: blur(100px);
+        width:85%;
+        height:50%;
+    }
 `
 
 export const DialogHeader = styled.div`
@@ -81,9 +141,9 @@ export const NftImage = styled.img`
 `
 
 export const NftTitle = styled.div`
-    font-size: 14px;
+    font-size: 18px;
     margin-top:8px;
-    color:${color.primary};
+    color:${color.white};
 `
 
 export const Nft = styled.div`

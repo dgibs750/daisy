@@ -3,133 +3,164 @@ import { color } from "@/styles/theme"
 import { Hex2Rgba } from "@/utils/helpers"
 
 
-export const Card = styled.div`
-    width:300px;
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-    transition: 0.3s;
-    border-radius: 5px;
+export const Container = styled.div`
+    width: 288px;
+    overflow:hidden;
 
-    &:hover{
-        box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    @media (max-width: 950px) {
+        width: 250px;
+    }
+    @media (max-width: 500px) {
+        width: 100%;
+    }
+`
+
+export const Card = styled.div`
+    width: 288px;
+    height: 452px;
+    padding: 20px;
+    background: linear-gradient(155.14deg, rgba(0, 0, 0, 0) -2.13%, rgba(255, 255, 255, 0.15) 136.58%);
+    border-radius:20px;
+    border: 1px solid;
+    border-color: rgba(189, 45, 135, 0.15);
+    box-shadow: 0px 4px 49px 0px rgba(0, 7, 72, 0.12);
+
+    @media (max-width: 950px) {
+        width: 250px;
+        height: 400px;
+        padding: 20px;
+    }
+    @media (max-width: 500px) {
+        display: flex;
+        width: 100%;
+        height: 90%;
+        padding: 20px; 
     }
 `
 
 export const CardContainer = styled.div`
-    padding: 2px 16px;
-`
-
-export const Dialog = styled.div`
-    position: relative;
-    width:500px;
-    max-width:100%;
-    max-height:100%;
-    z-index:2;
-    color: ${color.white};
-    padding-top:0px;
-    border-radius: 16px;
-    backdrop-filter: blur(20px);
-    background: linear-gradient(180deg, #15232D 0%, #0A141B 100%);
-    overflow-y: auto;
-    display:flex;
-    flex-direction:column;
-
-    @media (max-width: 576px) {
-        width:100%;
-    }
-    overflow:auto;
-    margin:auto;
-    box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.75); 
-`
-
-export const DialogHeader = styled.div`
-    display: flex;
-    align-items: center;
-    cursor:default;
-    user-select:none;
-    padding:0 24px;
-`
-
-
-export const DialogTitle = styled.div`
-    font-size:16px;
-    display:flex;
-    font-weight:500;
-    padding-top:18px;
-`
-
-export const DialogBody = styled.div`
-    z-index:2;
+    margin-top:12px;
 `
 
 export const NftImage = styled.img`
-    width:100%;
-    border-radius: 24px;
-`
+    width:248px;
+    height:281px;
+    border-radius: 15px;
 
-export const Nft = styled.div`
-    text-align:center;
-`
-
-export const NftSingle = styled.div`
-    display:flex;
-    justify-content:center;
-    width:100%;
-`
-
-
-
-
-
-
-export const Bottom = styled.div`
-    width:100%;
-    padding:0 24px;
-    padding-bottom:24px;
-    display:flex;
-    flex-direction:column;
-    align-items:center;
+    @media (max-width: 950px) {
+        width:100%;
+        height:60%;
+    }
+    @media (max-width: 500px) {
+        width:30%;
+        height:100%;
+    }
 `
 
 export const Title = styled.div`
-    font-size: 24px;
-    margin-top:24px;
-    text-align:center;
-    font-weight:500;
+    font-size: 22px;
+    line-height:33px;
+    text-align:left;
+    letter-spacing: 0em;
+    font-weight:600;
+    color:${color.white};
+
+    @media (max-width: 950px) {
+        font-size: 22px;
+        line-height:33px;
+        text-align:left;
+        letter-spacing: 0em;
+        font-weight:600;
+        color:${color.white};
+    }
+    @media (max-width: 500px) {
+        font-size: 22px;
+        line-height:0px;
+        margin-bottom: 5%;
+        text-align:center;
+        letter-spacing: 0em;
+        font-weight:600;
+        color:${color.white};
+    }
+`
+
+export const DetailsRow = styled.div`
+    display: flex;
+    flex-direction: row; 
+    justify-content:space-between;
+    width: 248px;
+    
+    padding: 0px, 3px, 0px, 3px;
+    gap: 40px;
+
+    @media (max-width: 950px) {
+        display: flex;
+        flex-direction: row; 
+        justify-content:space-between;
+        width: 100%;
+        
+        padding: 0px, 3px, 0px, 3px;
+        gap: 40px;
+    }
+    @media (max-width: 500px) {
+        display: flex;
+        flex-direction: row; 
+        justify-content:space-between;
+        width: 100%;
+        
+        padding: 0px, 3px, 0px, 3px;
+        gap: 20px;
+    }
+`
+
+export const DetailsColumn = styled.div`
+    flex-direction: column; 
+    width: 101px;
     color:${color.white};
 `
 
-export const Button = styled.button`
-    width:80%;
-    padding:8px 0;
-    border-radius:8px;
-    background-color:${color.primary};
-    color:${color.black};
-    font-size:18px;
-    font-weight:500;
-    cursor:pointer;
-    transition:all .1s ease-in-out;
-    &:hover{
-        background-color:${Hex2Rgba(color.primary, .8)};
+export const LDetails = styled.h1`
+    font-weight:600;
+    font-size:20px;
+    line-height:30px;
+    
+    @media (max-width: 950px) {
+        font-weight:600;
+        font-size:20px;
+        line-height:30px;
     }
-    outline:none;
-    border:none;
-    margin-top:24px;
-
-    &:active{
-        outline:none;
-        border:none;
-        background-color:${Hex2Rgba(color.primary, .5)};
+    @media (max-width: 500px) {
+        padding-left: 30%;
     }
 `
 
-export const MintBg = styled.div`
-    background-color = ${color.bg}
-    background-size: 100%;
-    position:absolute;
-    top:0;
-    right:0;
-    z-index:0;
-    pointer-events:none;
-    width:100%;
-    height:100%;
+export const LDetailFooter = styled.h3`
+    font-weight:500;
+    font-size:14px;
+    line-height:21px;
+    margin-top:-10px;
+
+    @media (max-width: 500px) {
+        padding-left: 30%;
+    }
+`
+
+export const RDetails = styled.h1`
+    text-align:right;
+    font-weight:600;
+    font-size:20px;
+    line-height:30px;
+`
+
+export const RDetailFooter = styled.h3`
+    text-align:right;
+    font-weight:500;
+    font-size:14px;
+    line-height:21px;
+    margin-top:-10px;
+`
+
+export const Currency = styled.span`
+    font-weight:500;
+    font-size:14px;
 `

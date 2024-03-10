@@ -9,7 +9,7 @@ export const Footer = styled.div`
     padding-top:10px;
     padding-left:10px;
     padding-right:10px;
-    display:felx;
+    display:flex;
     border-top: 1px solid #EAECF029;
     justify-content:space-between;
     align-items: center;

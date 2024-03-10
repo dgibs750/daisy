@@ -52,7 +52,7 @@ export const BgBlue = styled.div`
     align-items:flex-start;
     overflow:hidden;
     border-radius: 555px;
-    background: rgba(5, 0, 255, .35);
+    background: rgba(5, 0, 255, .45);
     filter: blur(247px);
 
     & svg{
