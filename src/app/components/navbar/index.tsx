@@ -13,12 +13,8 @@ const NavBar = () => {
             </Link>
             <C.HeaderButtonContainer>
                 <Link 
-                    href={''}
+                    href={'/launchpad'}
                     aria-disabled={true}
-                    pointer-event="none"
-                    data-tooltip-id="unavailable-tooltip"
-                    data-tooltip-content="Coming Soon."
-                    data-tooltip-offset={-10}
                     style={{ textDecoration: 'none' }}
                 >
                     <C.NavSelection>Launchpad</C.NavSelection>
@@ -46,12 +42,7 @@ const NavBar = () => {
                     <C.NavSelection>Generator</C.NavSelection>
                 </Link>
                 <Link
-                    href={''}
-                    aria-disabled={true}
-                    pointer-event="none"
-                    data-tooltip-id="unavailable-tooltip"
-                    data-tooltip-content="Coming Soon."
-                    data-tooltip-offset={-10}
+                    href={'https://anton.daisy.tools'}
                     style={{ textDecoration: 'none' }}
                 >
                     <C.NavSelection>Anton</C.NavSelection>
