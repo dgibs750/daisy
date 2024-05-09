@@ -4,12 +4,12 @@ import * as C from "./style";
 import { useEffect, useRef, useState } from "react";
 import * as db from '@/utils/db-connection';
 import CollectionsCard from "@/app/components/collectionsCard";
-import NavBar from "../components/navbar";
+import NavBar from "../app/components/navbar";
 import { Poppins } from 'next/font/google';
-import Footer from "../components/footer";
+import Footer from "../app/components/footer";
 import { useMediaQuery } from 'react-responsive';
 import { FaAngleLeft, FaAngleRight } from "react-icons/fa6";
-import MobileNavBar from "../components/mobileNav";
+import MobileNavBar from "../app/components/mobileNav";
 
 const poppins = Poppins({
     weight: '400',
@@ -29,9 +29,9 @@ const Launchpad = () => {
     useEffect(() => {
         if (hasPageBeenRendered.current['effect1']) {
             db.getAllCollections()
-            .then((res) => {
-                setData(res);
-            });
+                .then((res:any) => {
+                    setData(res[0]);
+                })
         }
         hasPageBeenRendered.current['effect1'] = true;
     }, [])
@@ -67,7 +67,7 @@ const Launchpad = () => {
                             : <C.LeftScrollBtn onClick={() => scroll(mintingNowRef, -290)}><FaAngleLeft /></C.LeftScrollBtn>
                         }
                         {
-                            data.map((collection, i) => <CollectionsCard key={i} config={collection} />)
+                            data!.map((collection, i) => <CollectionsCard key={i} config={collection} />)
                         }
                         { isGrid ? <></>
                             : <C.RightScrollBtn onClick={() => scroll(mintingNowRef, 290)}><FaAngleRight/></C.RightScrollBtn>
@@ -81,7 +81,7 @@ const Launchpad = () => {
                             : <C.LeftScrollBtn onClick={() => scroll(upcomingRef, -290)}><FaAngleLeft /></C.LeftScrollBtn>
                         }
                         {
-                            data.map((collection, i) => <CollectionsCard key={i} config={collection} />)
+                            data!.map((collection, i) => <CollectionsCard key={i} config={collection} />)
                         }
                         { isGrid ? <></>
                             : <C.RightScrollBtn onClick={() => scroll(upcomingRef, 290)}><FaAngleRight/></C.RightScrollBtn>
@@ -95,7 +95,7 @@ const Launchpad = () => {
                             : <C.LeftScrollBtn onClick={() => scroll(pastRef, -290)}><FaAngleLeft /></C.LeftScrollBtn>
                         }
                         {
-                            data.map((collection, i) => <CollectionsCard key={i} config={collection} />)
+                            data!.map((collection, i) => <CollectionsCard key={i} config={collection} />)
                         }
                         { isGrid ? <></>
                             : <C.RightScrollBtn onClick={() => scroll(pastRef, 290)}><FaAngleRight/></C.RightScrollBtn>

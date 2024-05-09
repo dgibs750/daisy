@@ -16,7 +16,7 @@ const WalletConnectContext = React.createContext({
 })
 
 const WalletConnectProvider = ({ children }: any) => {
-    const network = 'atlantic-2';
+    const network = 'pacific-1';
     const [isModalOpen, setIsModalOpen] = React.useState(false)
     const [wallet, setWallet] = React.useState<WalletConnect | null>(null)
 

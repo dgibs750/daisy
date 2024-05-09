@@ -7,12 +7,19 @@ const CollectionsCard = (_props: any) => {
 
     let config = _props.config;
 
-    let launchDate: any;
+    let launchDate: String;
+    let launchPrice: String;
 
     if (config.date != null) {
         launchDate = format(config.date, "MM/dd");
     } else {
         launchDate = 'TBA';
+    }
+
+    if (config.price != null) {
+        launchPrice = config.price;
+    } else {
+        launchPrice = 'TBA';
     }
 
     return (
@@ -41,7 +48,7 @@ const CollectionsCard = (_props: any) => {
                             </C.DetailsColumn>
                             <C.DetailsColumn>
                                 <C.RDetails>
-                                    {config.price} <C.Currency>Sei</C.Currency>
+                                    {launchPrice} <C.Currency>Sei</C.Currency>
                                 </C.RDetails>
                                 <C.RDetailFooter>
                                     Price

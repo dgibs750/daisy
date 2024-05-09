@@ -233,7 +233,7 @@ export const LaunchInfo = styled.div`
 `
 
 export const Title = styled.div`
-    font-size: 64px;
+    font-size: 52px;
     font-weight:700;
 `
 
@@ -362,6 +362,11 @@ export const PhaseDate = styled.div`
 `
 
 export const PhaseBottom = styled.div`
+    display:flex;
+    justify-content:space-between;
+`
+
+export const PhaseBottomData = styled.div`
 
 `
 

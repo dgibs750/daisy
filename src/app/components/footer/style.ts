@@ -51,3 +51,25 @@ export const TwitterIcon = styled.div`
         font-size:30px;
     }
 `
+
+export const SeiPrice = styled.div`
+    margin-top:15px;
+    margin-left:5px;
+    padding-bottom:10px;
+    align-content: center;
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: 0em;
+    text-align: center;
+    
+    @media (max-width: 768px) {
+        padding-bottom:5px;
+        margin-top:15px;
+        margin-left:5px;
+        align-content: center;
+        font-size: 16px;
+        line-height: 24px;
+        letter-spacing: 0em;
+        text-align: center;
+    }
+`
