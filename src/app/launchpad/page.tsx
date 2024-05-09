@@ -4,12 +4,12 @@ import * as C from "./style";
 import { useEffect, useRef, useState } from "react";
 import * as db from '@/utils/db-connection';
 import CollectionsCard from "@/app/components/collectionsCard";
-import NavBar from "../app/components/navbar";
+import NavBar from "@/app/components/navbar";
 import { Poppins } from 'next/font/google';
-import Footer from "../app/components/footer";
+import Footer from "@/app/components/footer";
 import { useMediaQuery } from 'react-responsive';
 import { FaAngleLeft, FaAngleRight } from "react-icons/fa6";
-import MobileNavBar from "../app/components/mobileNav";
+import MobileNavBar from "@/app/components/mobileNav";
 
 const poppins = Poppins({
     weight: '400',
