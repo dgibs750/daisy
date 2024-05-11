@@ -27,7 +27,8 @@ const SADAF_CONTRACT = "sei1caj6uxka36c7x87sjtcemnk7rd0tl4xp76p7rmvagszyae0u8fds
 
 const getDaisyContract = (network: string) => {
     if (network === "pacific-1") {
-        return SADAF_CONTRACT;
+        // return SADAF_CONTRACT;
+        return DAISY_CONTRACT_PACIFIC_1;
     } else if (network === "atlantic-2") {
         return DAISY_CONTRACT_ATLANTIC_2;
     } else {
