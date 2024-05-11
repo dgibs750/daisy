@@ -129,7 +129,7 @@ export const WalletConnect = styled.button`
 
 export const KadoButton = styled.button`
     width:100%;
-    margin-top: 7px;
+    margin-top: 20px;
     padding:16px 0;
     border-radius:8px;
     font-size:18px;
@@ -494,7 +494,45 @@ export const AmountValue = styled.input`
       
 `
 
+export const ButtonDiv = styled.div`
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    gap:10px;
+`
+
 export const MintButton = styled.button`
+    width:100%;
+    padding:16px 0;
+    border-radius:8px;
+    background-color:${color.primary};
+    color:${color.white};
+    font-size:18px;
+    font-weight:500;
+    cursor:pointer;
+    transition:all .1s ease-in-out;
+    &:hover{
+        background-color:${Hex2Rgba(color.primary, .8)};
+    }
+    outline:none;
+    border:none;
+    margin-top:24px;
+
+    &:disabled{
+        background-color:${color.primary} !important;
+        cursor:default;
+    }
+
+    &:active{
+        outline:none;
+        border:none;
+        background-color:${Hex2Rgba(color.primary, .5)};
+    }
+`
+
+export const iseiMintButton = styled.button`
     width:100%;
     padding:16px 0;
     border-radius:8px;

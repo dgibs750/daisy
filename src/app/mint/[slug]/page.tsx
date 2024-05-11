@@ -23,10 +23,11 @@ import Link from "next/link";
 
 const DAISY_CONTRACT_ATLANTIC_2 = "sei12qrhkssa22jjg90s67zzmw339rcjcskse42ykrzct46y0ec248asfc4g8g"
 const DAISY_CONTRACT_PACIFIC_1 = "sei1ajm9jf7xjdp8yjgva0y4u4672t74ym66kntjjg0kjd4axvedzr2q6ekusz"
+const SADAF_CONTRACT = "sei1caj6uxka36c7x87sjtcemnk7rd0tl4xp76p7rmvagszyae0u8fds272a9q"
 
 const getDaisyContract = (network: string) => {
     if (network === "pacific-1") {
-        return DAISY_CONTRACT_PACIFIC_1;
+        return SADAF_CONTRACT;
     } else if (network === "atlantic-2") {
         return DAISY_CONTRACT_ATLANTIC_2;
     } else {
@@ -70,6 +71,7 @@ const MintPage = ({ params }: { params: { slug: string } }) => {
     const [mintedInfo, setMintedInfo] = useState<any>({})
     const [showMintedNfts, setShowMintedNfts] = useState(false)
     const [balance, setBalance] = useState('')
+    const [iseiBalance, setIseiBalance] = useState('')
 
     useEffect(() => {
         // if (hasPageBeenRendered.current['effect1']) {
@@ -161,6 +163,9 @@ const MintPage = ({ params }: { params: { slug: string } }) => {
 
         let balance = await client.getBalance(wallet!.accounts[0].address, "usei")
         setBalance(new BigNumber(balance.amount).div(1e6).toString())
+
+        let iseiBalance = await client.getBalance(wallet!.accounts[0].address, "factory/sei1e3gttzq5e5k49f9f5gzvrl0rltlav65xu6p9xc0aj7e84lantdjqp7cncc/isei")
+        setIseiBalance(new BigNumber(balance.amount).div(1e6).toString())
 
         client.queryContractSmart(getDaisyContract("pacific-1"), { balance_of: { address: wallet!.accounts[0].address, collection: config.collection_address } }).then((result) => {
             setMyMintedNfts(result.mints)
@@ -377,6 +382,135 @@ const MintPage = ({ params }: { params: { slug: string } }) => {
 
         instruction.funds = [{
             denom: 'usei',
+            amount: new BigNumber(currentPhase.unit_price).plus(new BigNumber(daisyConfig.fee)).toString()
+        }]
+
+        console.log(instruction.funds)
+
+
+        let instructions = []
+
+        for (let i = 0; i < amount; i++) {
+            instructions.push(instruction)
+        }
+
+        console.log(instructions)
+
+        let loading = toasty.loading("Minting...")
+        try {
+
+            const mintReceipt = await client.executeMultiple(wallet!.accounts[0].address, instructions, "auto")
+            toasty.dismiss(loading)
+            toasty.success("Minted successfully")
+
+            let tokenIds: any[] = [];
+
+            const logs = mintReceipt.logs
+            for (const log of logs) {
+                const events = log.events
+                for (const event of events) {
+                    if (event.type === 'wasm') {
+                        // Find the attribute with the key 'collection'
+                        for (const attribute of event.attributes) {
+                            if (attribute.key === 'token_id') {
+                                tokenIds.push(attribute.value)
+                                break
+                            }
+                        }
+                    }
+                }
+            }
+
+            refresh()
+            refreshMyMintedNfts()
+
+            loadNowMintedMetadata(tokenIds).then((metadata: any) => {
+                setMintedInfo({ mints: metadata })
+                setShowMintedModal(true)
+            }).catch((e) => {
+                setMintedInfo({ mints: tokenIds })
+                setShowMintedModal(true)
+                console.log(e)
+            })
+        } catch (e: any) {
+            toasty.dismiss(loading)
+            if (e.message.includes("Max Tokens Minted"))
+                toasty.error("You can only mint " + currentPhase.max_tokens + " tokens per wallet for this phase")
+            else if (e.message !== "Transaction declined")
+                toasty.error("Mint failed")
+
+            console.log(e)
+
+        }
+    }
+
+    const mintWithIsei = async () => {
+        if (wallet === null) return openWalletConnect()
+
+        //check if amount is larger than max tokens
+        if (currentPhase.max_tokens > 0 && amount > currentPhase.max_tokens) {
+            toasty.error("You can only mint " + currentPhase.max_tokens + " tokens per wallet")
+            return
+        }
+
+        //check if amount is larger than remaining tokens
+        if (amount > collection.supply - collection.mintedSupply) {
+            toasty.error("There are only " + (collection.supply - collection.mintedSupply) + " tokens left")
+            return
+        }
+
+        //check if current phase is active
+        if (new Date(currentPhase.start_time) > new Date()) {
+            toasty.error("This phase has not started yet")
+            return
+        }
+
+        //check if current phase has ended
+        if (!currentPhase.noend && new Date(currentPhase.end_time) < new Date()) {
+            toasty.error("This phase has ended")
+            return
+        }
+
+        //load client
+        const client = await getSigningCosmWasmClient(mainRpcNode, wallet.offlineSigner, {
+            gasPrice: GasPrice.fromString("0.01usei")
+        })
+
+        let daisyConfig = await client.queryContractSmart(getDaisyContract("pacific-1"), { get_config: {} })
+
+        console.log(daisyConfig.fee);
+        //check if wallet have enough isei balance
+        if (currentPhase.unit_price >= 0 && new BigNumber(currentPhase.unit_price).div(1e6).plus((new BigNumber(daisyConfig.fee).div(1e6))).times(amount).gt(new BigNumber(iseiBalance))) {
+            toasty.error("Insufficient isei balance")
+            return
+        }
+
+        let merkleProof: any = null
+        let hashedAddress: any = null
+
+        if (currentPhase.merkle_root !== '' && currentPhase.merkle_root !== null) {
+            let hashedWallets = currentPhase.allowlist.map(keccak_256)
+            const tree = new MerkleTree(hashedWallets, keccak_256, { sortPairs: true })
+            merkleProof = tree.getProof(Buffer.from(keccak_256(wallet!.accounts[0].address))).map(element => Array.from(element.data))
+            hashedAddress = Array.from(Buffer.from(keccak_256(wallet!.accounts[0].address)))
+        }
+
+        const instruction: any = {
+            contractAddress: getDaisyContract("pacific-1"),
+            msg: {
+                mint_with_isei: {
+                    collection: config.collection_address,
+                    group: currentPhase.name,
+                    recipient: wallet!.accounts[0].address,
+                    merkle_proof: merkleProof,
+                    hashed_address: hashedAddress
+                }
+            }
+        }
+
+
+        instruction.funds = [{
+            denom: 'factory/sei1e3gttzq5e5k49f9f5gzvrl0rltlav65xu6p9xc0aj7e84lantdjqp7cncc/isei',
             amount: new BigNumber(currentPhase.unit_price).plus(new BigNumber(daisyConfig.fee)).toString()
         }]
 
@@ -677,16 +811,33 @@ const MintPage = ({ params }: { params: { slug: string } }) => {
                                                     </C.AmountButton>
                                                 </C.Amount>
                                             </C.MintInfo>
-                                            <C.MintButton onClick={mint} disabled={walletWhitelisted === false || collection.supply - collection.mintedSupply <= 0}>
-                                                {collection.supply - collection.mintedSupply <= 0 ? (
-                                                    <>Sold Out!</>
-                                                ) : (
-                                                    <>{walletWhitelisted === true ? 'Mint' : 'Not Whitelisted'}</>
-                                                )}
-                                            </C.MintButton>
-                                            <C.KadoButton onClick={openKadoPayments}>
+                                            {!!config.isei ?
+                                                <C.ButtonDiv>
+                                                    <C.MintButton onClick={mint} disabled={walletWhitelisted === false || collection.supply - collection.mintedSupply <= 0}>
+                                                        {collection.supply - collection.mintedSupply <= 0 ? (
+                                                            <>Sold</>
+                                                        ) : (
+                                                            <>{walletWhitelisted === true ? 'Mint' : 'Not Whitelisted'}</>
+                                                        )}
+                                                    </C.MintButton>
+                                                    <C.iseiMintButton onClick={mintWithIsei} disabled={walletWhitelisted === false || collection.supply - collection.mintedSupply <= 0}>
+                                                        {collection.supply - collection.mintedSupply <= 0 ? (
+                                                            <>Out</>
+                                                        ) : (
+                                                            <>{walletWhitelisted === true ? 'Mint with iSei' : 'Not Whitelisted'}</>
+                                                        )}
+                                                    </C.iseiMintButton>
+                                                </C.ButtonDiv>
+                                                : <C.MintButton onClick={mint} disabled={walletWhitelisted === false || collection.supply - collection.mintedSupply <= 0}>
+                                                        {collection.supply - collection.mintedSupply <= 0 ? (
+                                                            <>Sold Out</>
+                                                        ) : (
+                                                            <>{walletWhitelisted === true ? 'Mint' : 'Not Whitelisted'}</>
+                                                        )}
+                                                    </C.MintButton>}
+                                            {/* <C.KadoButton onClick={openKadoPayments}>
                                                 <>Fund Account with Kado</>
-                                            </C.KadoButton>
+                                            </C.KadoButton> */}
                                             {myMintedNfts.length > 0 && (
                                                 <C.MintedBalance onClick={() => loadMinted()}>
                                                     You&apos;ve minted <span>{myMintedNfts.length}/{currentPhase.max_tokens}</span> NFTs
