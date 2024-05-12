@@ -724,6 +724,7 @@ const MintPage = ({ params }: { params: { slug: string } }) => {
                                 balance={balance + " SEI"}
                                 address={wallet!.accounts[0].address}
                             >
+                                <DropdownItem onClick={() => { openKadoPayments() }}>Buy SEI</DropdownItem>
                                 <DropdownItem onClick={() => navigator.clipboard.writeText(wallet!.accounts[0].address)}>Copy Address</DropdownItem>
                                 <DropdownItem onClick={() => { disconnectWallet(); openWalletConnect() }}>Change Wallet</DropdownItem>
                                 <DropdownItem onClick={disconnectWallet}>Disconnect</DropdownItem>
@@ -836,9 +837,6 @@ const MintPage = ({ params }: { params: { slug: string } }) => {
                                                             <>{walletWhitelisted === true ? 'Mint' : 'Not Whitelisted'}</>
                                                         )}
                                                     </C.MintButton>}
-                                            {/* <C.KadoButton onClick={openKadoPayments}>
-                                                <>Fund Account with Kado</>
-                                            </C.KadoButton> */}
                                             {myMintedNfts.length > 0 && (
                                                 <C.MintedBalance onClick={() => loadMinted()}>
                                                     You&apos;ve minted <span>{myMintedNfts.length}/{currentPhase.max_tokens}</span> NFTs
