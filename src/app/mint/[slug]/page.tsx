@@ -115,7 +115,7 @@ const MintPage = ({ params }: { params: { slug: string } }) => {
     const refresh = async () => {
         try {
             const client = await SigningCosmWasmClient.connect(mainRpcNode)
-            client.queryContractSmart(getDaisyContract("pacific-1"), { get_collection: { collection: config.collection_address } }).then((result) => {
+            client.queryContractSmart(config.contract, { get_collection: { collection: config.collection_address } }).then((result) => {
                 //console.log(result)
                 let collectionData: any = {
                     supply: result.supply,
@@ -168,7 +168,7 @@ const MintPage = ({ params }: { params: { slug: string } }) => {
         let iseiBalance = await client.getBalance(wallet!.accounts[0].address, "factory/sei1e3gttzq5e5k49f9f5gzvrl0rltlav65xu6p9xc0aj7e84lantdjqp7cncc/isei")
         setIseiBalance(new BigNumber(balance.amount).div(1e6).toString())
 
-        client.queryContractSmart(getDaisyContract("pacific-1"), { balance_of: { address: wallet!.accounts[0].address, collection: config.collection_address } }).then((result) => {
+        client.queryContractSmart(config.contract, { balance_of: { address: wallet!.accounts[0].address, collection: config.collection_address } }).then((result) => {
             setMyMintedNfts(result.mints)
 
             client.disconnect()
@@ -348,7 +348,7 @@ const MintPage = ({ params }: { params: { slug: string } }) => {
             gasPrice: GasPrice.fromString("0.01usei")
         })
 
-        let daisyConfig = await client.queryContractSmart(getDaisyContract("pacific-1"), { get_config: {} })
+        let daisyConfig = await client.queryContractSmart(config.contract, { get_config: {} })
 
         console.log(daisyConfig.fee);
         //check if wallet have enough balance
@@ -368,7 +368,7 @@ const MintPage = ({ params }: { params: { slug: string } }) => {
         }
 
         const instruction: any = {
-            contractAddress: getDaisyContract("pacific-1"),
+            contractAddress: config.contract,
             msg: {
                 mint_native: {
                     collection: config.collection_address,
@@ -477,7 +477,7 @@ const MintPage = ({ params }: { params: { slug: string } }) => {
             gasPrice: GasPrice.fromString("0.01usei")
         })
 
-        let daisyConfig = await client.queryContractSmart(getDaisyContract("pacific-1"), { get_config: {} })
+        let daisyConfig = await client.queryContractSmart(config.contract, { get_config: {} })
 
         console.log(daisyConfig.fee);
         //check if wallet have enough isei balance
@@ -497,7 +497,7 @@ const MintPage = ({ params }: { params: { slug: string } }) => {
         }
 
         const instruction: any = {
-            contractAddress: getDaisyContract("pacific-1"),
+            contractAddress: config.contract,
             msg: {
                 mint_with_isei: {
                     collection: config.collection_address,
@@ -715,7 +715,7 @@ const MintPage = ({ params }: { params: { slug: string } }) => {
                 <C.Header>
                     <Link href={'/'} style={{ textDecoration: 'none' }}><C.Logo src="/images/DAISY_Logo-Explore-06.svg" /></Link>
                     <C.HeaderButtonContainer>
-                        <Link href={'/'} style={{ textDecoration: 'none' }}><C.HomeButton>Go Back</C.HomeButton></Link>
+                        <Link href={'/launchpad'} style={{ textDecoration: 'none' }}><C.HomeButton>Go Back</C.HomeButton></Link>
                         {wallet === null && (
                             <C.WalletConnect onClick={openWalletConnect}>Connect Wallet</C.WalletConnect>
                         )}

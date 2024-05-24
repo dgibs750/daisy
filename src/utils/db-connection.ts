@@ -29,6 +29,48 @@ export const getAllCollections = async () => {
     }
 }
 
+export const getCurrentCollections = async () => {
+    try {
+        const pool = await createTCPPool();
+        const conn = await pool.getConnection();
+        const res = await conn.query('SELECT * FROM Collections WHERE sold_out = false;');
+        const responseJSON = JSON.parse(JSON.stringify(res));
+        conn.release();
+        return responseJSON;
+    } catch (err) {
+        console.log('error here : ', err);
+        throw err;
+    }
+}
+
+export const getPastCollections = async () => {
+    try {
+        const pool = await createTCPPool();
+        const conn = await pool.getConnection();
+        const res = await conn.query('SELECT * FROM Collections WHERE `date` < CURRENT_TIMESTAMP() AND sold_out = true;');
+        const responseJSON = JSON.parse(JSON.stringify(res));
+        conn.release();
+        return responseJSON;
+    } catch (err) {
+        console.log('error here : ', err);
+        throw err;
+    }
+}
+
+export const getUpcomingCollections = async () => {
+    try {
+        const pool = await createTCPPool();
+        const conn = await pool.getConnection();
+        const res = await conn.query('SELECT * FROM Collections WHERE `date` > CURRENT_TIMESTAMP();');
+        const responseJSON = JSON.parse(JSON.stringify(res));
+        conn.release();
+        return responseJSON;
+    } catch (err) {
+        console.log('error here : ', err);
+        throw err;
+    }
+}
+
 export const getCollection = async (address: string) => {
     try {
         const pool = await createTCPPool();

@@ -288,14 +288,15 @@ export const TotalMintedProgress = styled.div<{ value: number }>`
 
 export const Headline = styled.h4`
     color:${color.white};
-    font-weight: bold;
-    margin-top:32px;
+    font-weight: 600;
+    margin-top:35px;
+    margin-bottom:0px;
 `
 
 export const Description = styled.div`
     color:${color.whiteShade};
-    font-size:14px;
-    margin-top:32px;
+    font-size:15px;
+    margin-top:20px;
 `
 
 export const Links = styled.div`
@@ -374,9 +375,13 @@ export const PhaseBadge = styled.div`
     position:absolute;
     right:16px;
     padding:8px;
-    border-radius:8px;
-    background-color:${color.secondaryLight};
+    border-radius:4px;
+    background-color:${color.secondaryDark};
     font-size:12px;
+    color: #dad4d4;
+    top: 8px;
+    font-weight: 600;
+    letter-spacing: 0.35px;
 `
 
 export const MintBlock = styled.div`

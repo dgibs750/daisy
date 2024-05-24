@@ -1,6 +1,5 @@
 import styled from "styled-components"
 import { color } from "@/styles/theme"
-import { Hex2Rgba } from "@/utils/helpers"
 
 
 export const Container = styled.div`
@@ -18,7 +17,7 @@ export const Container = styled.div`
 export const Card = styled.div`
     width: 288px;
     height: 452px;
-    padding: 20px;
+    margin: 0;
     background: linear-gradient(155.14deg, rgba(0, 0, 0, 0) -2.13%, rgba(255, 255, 255, 0.15) 136.58%);
     border-radius:20px;
     border: 1px solid;
@@ -28,36 +27,40 @@ export const Card = styled.div`
     @media (max-width: 950px) {
         width: 250px;
         height: 400px;
-        padding: 20px;
     }
     @media (max-width: 500px) {
         display: flex;
         width: 100%;
         height: 90%;
-        padding: 20px; 
     }
 `
 
 export const CardContainer = styled.div`
     margin-top:12px;
+    @media (max-width: 500px) {
+        width: 100%;
+    }
 `
 
 export const NftImage = styled.img`
-    width:248px;
-    height:281px;
-    border-radius: 15px;
+    object-fit: cover;
+    width:100%;
+    border-radius: 15px 15px 0px 0px;
 
     @media (max-width: 950px) {
         width:100%;
         height:60%;
     }
     @media (max-width: 500px) {
-        width:30%;
+        object-fit: cover;
+        border-radius: 15px 0px 0px 15px;
+        width: calc(100vw - 80%);
         height:100%;
     }
 `
 
 export const Title = styled.div`
+    margin-left: 20px;
     font-size: 22px;
     line-height:33px;
     text-align:left;
@@ -74,10 +77,11 @@ export const Title = styled.div`
         color:${color.white};
     }
     @media (max-width: 500px) {
+        margin-left: 20px;
+        padding-top: 20px;
         font-size: 22px;
         line-height:0px;
-        margin-bottom: 5%;
-        text-align:center;
+        text-align:left;
         letter-spacing: 0em;
         font-weight:600;
         color:${color.white};
@@ -87,35 +91,30 @@ export const Title = styled.div`
 export const DetailsRow = styled.div`
     display: flex;
     flex-direction: row; 
-    justify-content:space-between;
-    width: 248px;
+    justify-content: space-between;
+    margin-left: 20px;
+    width: calc(100% - 40px);
     
-    padding: 0px, 3px, 0px, 3px;
-    gap: 40px;
+    
 
     @media (max-width: 950px) {
         display: flex;
         flex-direction: row; 
         justify-content:space-between;
-        width: 100%;
-        
-        padding: 0px, 3px, 0px, 3px;
-        gap: 40px;
+        width: calc(100% - 40px);
     }
     @media (max-width: 500px) {
         display: flex;
         flex-direction: row; 
         justify-content:space-between;
+        margin-left: 0px;
+        padding-right: 20px;
         width: 100%;
-        
-        padding: 0px, 3px, 0px, 3px;
-        gap: 20px;
     }
 `
 
 export const DetailsColumn = styled.div`
     flex-direction: column; 
-    width: 101px;
     color:${color.white};
 `
 
@@ -123,6 +122,7 @@ export const LDetails = styled.h1`
     font-weight:600;
     font-size:20px;
     line-height:30px;
+    margin-top:-10px;
     
     @media (max-width: 950px) {
         font-weight:600;
@@ -138,7 +138,7 @@ export const LDetailFooter = styled.h3`
     font-weight:500;
     font-size:14px;
     line-height:21px;
-    margin-top:-10px;
+    margin-top: 25px;
 
     @media (max-width: 500px) {
         padding-left: 30%;
@@ -150,6 +150,11 @@ export const RDetails = styled.h1`
     font-weight:600;
     font-size:20px;
     line-height:30px;
+    margin-top:-10px;
+
+    @media (max-width: 500px) {
+        padding-right: 0px;
+    }
 `
 
 export const RDetailFooter = styled.h3`
@@ -157,7 +162,11 @@ export const RDetailFooter = styled.h3`
     font-weight:500;
     font-size:14px;
     line-height:21px;
-    margin-top:-10px;
+    margin-top: 25px;
+
+    @media (max-width: 500px) {
+        padding-right: 10%;
+    }
 `
 
 export const Currency = styled.span`

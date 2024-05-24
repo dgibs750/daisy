@@ -37,7 +37,10 @@ export const FooterContent = styled.div`
     }
 `
 
-export const TwitterIcon = styled.div`
+export const SocialIcons = styled.div`
+    display: flex;
+    gap: 10px;
+    align-items: center;
     font-size:2vw;
     margin-right:5px;
     margin-top:15px;
@@ -46,6 +49,7 @@ export const TwitterIcon = styled.div`
     @media (max-width: 768px) {
         font-size: 5vw;
         padding-bottom:5px;
+        gap: 5px;
     }
     @media (min-width: 1500px) {
         font-size:30px;
@@ -72,4 +76,8 @@ export const SeiPrice = styled.div`
         letter-spacing: 0em;
         text-align: center;
     }
+`
+
+export const Icon = styled.img`
+    height: 2.5vh;
 `

@@ -9,6 +9,7 @@ const CollectionsCard = (_props: any) => {
 
     let launchDate: String;
     let launchPrice: String;
+    let collectionSize: String;
 
     if (config.date != null) {
         launchDate = format(config.date, "MM/dd");
@@ -20,6 +21,12 @@ const CollectionsCard = (_props: any) => {
         launchPrice = config.price;
     } else {
         launchPrice = 'TBA';
+    }
+
+    if (config.size != null) {
+        collectionSize = config.size;
+    } else {
+        collectionSize = 'TBA';
     }
 
     return (
@@ -39,20 +46,28 @@ const CollectionsCard = (_props: any) => {
                         <C.Title>{config.name}</C.Title>
                         <C.DetailsRow>
                             <C.DetailsColumn>
-                                <C.LDetails>
-                                    {launchDate}
-                                </C.LDetails>
                                 <C.LDetailFooter>
                                     Date
                                 </C.LDetailFooter>
+                                <C.LDetails>
+                                    {launchDate}
+                                </C.LDetails>
                             </C.DetailsColumn>
                             <C.DetailsColumn>
-                                <C.RDetails>
-                                    {launchPrice} <C.Currency>Sei</C.Currency>
-                                </C.RDetails>
+                                <C.LDetailFooter>
+                                    Size
+                                </C.LDetailFooter>
+                                <C.LDetails>
+                                    {collectionSize}
+                                </C.LDetails>
+                            </C.DetailsColumn>
+                            <C.DetailsColumn>
                                 <C.RDetailFooter>
                                     Price
                                 </C.RDetailFooter>
+                                <C.RDetails>
+                                    {launchPrice} <C.Currency>Sei</C.Currency>
+                                </C.RDetails>
                             </C.DetailsColumn>
                         </C.DetailsRow>
                     </C.CardContainer>

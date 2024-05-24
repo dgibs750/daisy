@@ -3,9 +3,10 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import * as C from "./style";
 import { Roboto, DM_Sans } from 'next/font/google';
-import { faXTwitter } from "@fortawesome/free-brands-svg-icons";
+import { faXTwitter, faDiscord, faGit } from "@fortawesome/free-brands-svg-icons";
 import Link from "next/link";
 import { color } from "@/styles/theme";
+
 import { Price, PriceServiceConnection } from"@pythnetwork/price-service-client";
 import { useState } from "react";
 
@@ -42,15 +43,29 @@ const Footer = () => {
                     {/* <C.SeiPrice>
                         SEI • {livePrice}
                     </C.SeiPrice> */}
-                    <C.TwitterIcon>
+                    <C.SocialIcons>
                         <Link
-                            href={'https://twitter.com/SeiTools'}
+                            href={'https://twitter.com/DaisyTools'}
                             target="_blank"
                             style={{ textDecoration: 'none' }}    
                         >
-                            <FontAwesomeIcon color={color.white} icon={faXTwitter} />
+                            <C.Icon src="/images/twitter-x.svg" alt="Gitbook" />
                         </Link>
-                    </C.TwitterIcon>
+                        <Link
+                            href={'https://daisy-7.gitbook.io/daisy/'}
+                            target="_blank"
+                            style={{ textDecoration: 'none' }}    
+                        >
+                            <C.Icon src="/images/GitBook_-_Icon_-_Light.svg" alt="Gitbook" />
+                        </Link>
+                        <Link
+                            href={'https://discord.gg/JkT2WKJf'}
+                            target="_blank"
+                            style={{ textDecoration: 'none' }}    
+                        >
+                            <C.Icon src="/images/discord-mark-white.svg" alt="Gitbook" />
+                        </Link>
+                    </C.SocialIcons>
                 </C.Footer>
     )
 };

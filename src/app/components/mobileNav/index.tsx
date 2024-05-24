@@ -19,20 +19,20 @@ const MobileNavBar = () => {
                 <C.Logo src="/images/DAISY_Wordmark-16.svg" />
             </Link>
             <Menu right styles={ styles } customBurgerIcon={ <FontAwesomeIcon color={color.primary}icon={faBars} /> }>
-                {/* <Link
+                <Link
                     href={'/launchpad'}
                     style={{ textDecoration: 'none' }}
-                > */}
+                >
                     <C.NavSelection>Launchpad</C.NavSelection>
-                {/* </Link> */}
+                </Link>
                 <C.NavSelection>Auctions</C.NavSelection>
                 <C.NavSelection>Generator</C.NavSelection>
-                {/* <Link
+                <Link
                     href={'https://anton.daisy.tools'}
                     style={{ textDecoration: 'none' }}
-                > */}
+                >
                     <C.NavSelection>Anton</C.NavSelection>
-                {/* </Link> */}
+                </Link>
                 <Link href={'https://airtable.com/app7iJdlG5RS4GicU/shrnTwmhJTBJIVHz7'} target="_blank" style={{ textDecoration: 'none' }}>
                     <C.ApplyButton>Apply Here</C.ApplyButton>
                 </Link>
