@@ -7,7 +7,8 @@ const MintedModal = (props: any, config: any) => {
         <C.Modal>
             <C.Overlay onClick={props.close}></C.Overlay>
             <C.Dialog>
-                <C.MintBg></C.MintBg>
+                <C.BgPink />
+                <C.BgBlue />
                 <C.DialogHeader>
                     <C.DialogTitle></C.DialogTitle>
                     <C.CloseButton onClick={props.close}>&times;</C.CloseButton>
@@ -19,16 +20,7 @@ const MintedModal = (props: any, config: any) => {
                             <C.Nft>
                                 <C.NftImage src={typeof props.mints[0].data === "undefined" ? `${props.tokenUri}/${props.mints[0]}.png` : props.mints[0].data.image}></C.NftImage>
                                 <C.NftTitle>
-                                    {config.nft_name_type === "default" && (
-                                        <>
-                                            {typeof props.mints[0].data === "undefined" ? (props.name + ' #' + props.mints[0]) : props.mints[0].data.name}
-                                        </>
-                                    )}
-                                    {config.nft_name_type === "token_id" && (
-                                        <>
-                                            {(props.name + ' #' + props.mints[0].mint)}
-                                        </>
-                                    )}
+                                    {typeof props.mints[0].data === "undefined" ? (props.name + ' #' + props.mints[0]) : props.mints[0].data.name}
                                 </C.NftTitle>
                             </C.Nft>
                         </C.NftSingle>
@@ -40,16 +32,7 @@ const MintedModal = (props: any, config: any) => {
                                 <C.Nft key={i}>
                                     <C.NftImage src={typeof mint.data === "undefined" ? `${props.tokenUri}/${mint}.png` : mint.data.image}></C.NftImage>
                                     <C.NftTitle>
-                                        {config.nft_name_type === "default" && (
-                                            <>
-                                                {typeof mint.data === "undefined" ? (props.name + ' #' + mint) : mint.data.name}
-                                            </>
-                                        )}
-                                        {config.nft_name_type === "token_id" && (
-                                            <>
-                                                {(props.name + ' #' + mint.mint)}
-                                            </>
-                                        )}
+                                        {typeof mint.data === "undefined" ? (props.name + ' #' + mint) : mint.data.name}
                                     </C.NftTitle>
                                 </C.Nft>
                             ))}
@@ -59,7 +42,7 @@ const MintedModal = (props: any, config: any) => {
                     <C.Bottom>
 
                         <C.Title>
-                            Mint Successful!
+                            Minted!
                         </C.Title>
 
                         <C.Button onClick={props.close}>

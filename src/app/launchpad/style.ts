@@ -50,7 +50,7 @@ export const BgBlue = styled.div`
     align-items:flex-start;
     overflow:hidden;
     border-radius: 555px;
-    background: rgba(5, 0, 255, .35);
+    background: rgba(5, 0, 255, .45);
     filter: blur(247px);
 
     & svg{
@@ -72,7 +72,7 @@ export const Container = styled.div`
     max-width: 1255px;
     margin: 0 auto;
     padding: 0 20px;
-    height:100%;
+    min-height:100vh;
     width:100%;
     position:relative;
     z-index:1;
@@ -81,47 +81,28 @@ export const Container = styled.div`
     }
 `
 
-export const Header = styled.div`
-    padding-top:76px;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-
-    @media (max-width: 768px) {
-        flex-direction:column;
-        padding-top:24px;
-        &>*:nth-child(2){
-            margin:8px 0;
-        }
-    }
+export const LaunchContainer = styled.div`
+    position: relative;
+    width: 100%;
+    height: 100%;
+    padding-top: 5%;
+    padding-right: 0px;
+    padding-bottom: 80px;
+    padding-left: 0px;
+    gap: 66px;
+    margin-bottom: 60px;
 `
 
-export const HeaderButtonContainer = styled.div`
+export const LaunchList = styled.div`
     display: flex;
+    width: 100%;
     gap: 16px;
-`
+    flex-direction: row;
+    flex-wrap: wrap;
 
-export const Logo = styled.img`
-    width:147px;
-`
-
-export const ApplyButton = styled.button`
-    background-color: transparent;
-    color:${color.white};
-    border: 1px solid ${color.white};
-    padding:0px 24px;
-    height:43px;
-    display:flex;
-    align-items:center;
-    border-radius:8px;
-    font-size:14px;
-    font-weight:500;
-    cursor:pointer;
-    transition:all .1s ease-in-out;
-    &:hover{
-        background-color:${Hex2Rgba(color.white, .4)};
-    }
-    &:active{
-        background-color:${Hex2Rgba(color.white, .5)};
+    @media (max-width: 500px) {
+        height: 100%;
+        flex-direction: row;
+        gap: 0px;
     }
 `

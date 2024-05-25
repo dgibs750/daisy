@@ -13,12 +13,12 @@ const NavBar = () => {
             </Link>
             <C.HeaderButtonContainer>
                 <Link 
-                    href={''}
+                    href={'/launchpad'}
                     aria-disabled={true}
-                    pointer-event="none"
-                    data-tooltip-id="unavailable-tooltip"
-                    data-tooltip-content="Coming Soon."
-                    data-tooltip-offset={-10}
+                    // pointer-event="none"
+                    // data-tooltip-id="unavailable-tooltip"
+                    // data-tooltip-content="Coming Soon."
+                    // data-tooltip-offset={-10}
                     style={{ textDecoration: 'none' }}
                 >
                     <C.NavSelection>Launchpad</C.NavSelection>
@@ -46,15 +46,21 @@ const NavBar = () => {
                     <C.NavSelection>Generator</C.NavSelection>
                 </Link>
                 <Link
-                    href={'/anton'}
+                    href={'https://anton.daisy.tools'}
+                    aria-disabled={true}
+                    target="_blank"
+                    // pointer-event="none"
+                    // data-tooltip-id="unavailable-tooltip"
+                    // data-tooltip-content="Coming Soon."
+                    // data-tooltip-offset={-10}
                     style={{ textDecoration: 'none' }}
                 >
                     <C.NavSelection>Anton</C.NavSelection>
                 </Link>
                 <Tooltip id="unavailable-tooltip" place="bottom" />
-                {/* <Link href={'https://google.com'} target="_blank" style={{ textDecoration: 'none' }}>
-                    <C.ApplyButton>Apply Here</C.ApplyButton>
-                </Link> */}
+                <Link href={'https://airtable.com/app7iJdlG5RS4GicU/shrnTwmhJTBJIVHz7'} target="_blank" style={{ textDecoration: 'none' }}>
+                    <C.ApplyButton>Apply Now</C.ApplyButton>
+                </Link>
             </C.HeaderButtonContainer>
         </C.Header>
     )

@@ -8,6 +8,10 @@ export const Home = styled.div`
     background-color: ${color.bg};
     min-height:100vh;
     height:100%;
+
+    @media (max-width: 400px) { 
+        overflow: hidden;  
+    }
 `
 
 export const BgPink = styled.div`
@@ -52,7 +56,7 @@ export const BgBlue = styled.div`
     align-items:flex-start;
     overflow:hidden;
     border-radius: 555px;
-    background: rgba(5, 0, 255, .35);
+    background: rgba(5, 0, 255, .45);
     filter: blur(247px);
 
     & svg{
@@ -74,7 +78,7 @@ export const Container = styled.div`
     max-width: 1255px;
     margin: 0 auto;
     padding: 0 20px;
-    height:100%;
+    min-height:100vh;
     width:100%;
     position:relative;
     z-index:1;
@@ -107,111 +111,80 @@ export const Logo = styled.img`
     width:130px;
 `
 
-export const ApplyButton = styled.button`
-    background-color: transparent;
-    color:${color.white};
-    border: 1px solid ${color.white};
-    padding:0px 24px;
-    height:43px;
+export const HeaderContainer = styled.div`
+    width: 100%;
+    height: calc(100vh - 270px);
+    padding-top: 24px;
+    padding-right: 0px;
+    padding-bottom: 24px;
+    padding-left: 0px;
+    margin-bottom: 100px;
+    gap: 10px;
     display:flex;
-    align-items:center;
-    border-radius:8px;
-    font-size:14px;
-    font-weight:500;
-    cursor:pointer;
-    transition:all .1s ease-in-out;
-    &:hover{
-        background-color:${Hex2Rgba(color.white, .4)};
+    justify-content:space-between;
+
+    @media (max-width: 970px) {
+        flex-direction:column;
+        padding-top:24px;  
+        margin-bottom: 350px;   
     }
-    &:active{
-        background-color:${Hex2Rgba(color.white, .5)};
+    @media (max-width: 768px) {
+        flex-direction:column;
+        padding-top:24px;  
+        margin-bottom: 170px;   
+    }
+    @media (max-width: 500px) { 
+        height: 100vh;
+        margin-bottom: 50px;   
+    }
+    @media (max-width: 400px) { 
+        height: 100vh;
+        margin-bottom: 300px;   
+    }
+
+    @media (max-height: 820px) {
+        margin-bottom: 175px;
+    }
+    @media (max-height: 745px) {
+        margin-bottom: 300px;
     }
 `
-
-export const CenterContainer = styled.div`
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height:85vh;
-`
-
 export const TitleContainer = styled.div`
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
+    width: 60%;
+    display:flex;
+    flex-direction:column;
+
+    @media (max-width: 970px) {
+        width: 100%;
+    }
 `
 
 export const Title = styled.h1`
+    font-size: 100px;
     font-weight: 700;
-    font-size:55px;
-    margin-top:-5px;
-    margin-bottom:30px;
-    text-align: bottom;
+    line-height: 105px;
+    letter-spacing: -0.035em;
+    text-align: left;
+    margin-bottom: -70px;
 
-    @media (max-width: 800px) {
-        font-size:5vw;
-        margin-top:0px;
-        margin-bottom:-5px;
+    @media (max-width: 970px) {
+        font-family: Inter;
+        font-size: 100px;
+        font-weight: 800;
+        line-height: 58px;
+        letter-spacing: -0.035em;
+        text-align: center;
+        margin-bottom: -40px;
     }
-    @media (max-width: 500px) {
-        line-height:100%;
-        text-align:center;
-        font-size:13vw;
-        margin-top:10px;
-        margin-bottom:10px;
+    @media (max-width: 768px) {
+        font-family: Inter;
+        font-size: 60px;
+        font-weight: 800;
+        line-height: 58px;
+        letter-spacing: -0.035em;
+        text-align: center;
+        margin-bottom: -40px;
     }
-    @media (min-width: 1500px) {
-        font-size:55px;
-        margin-top:0px;
-        margin-bottom:30px;
-    }
-`
-
-export const Desc = styled.h3`
-    font-weight: 400;
-    font-size:22px;
-    line-height:100%;
-    margin-top:-30px;
-
-    @media (max-width: 800px) {
-        font-size:3vw;
-        margin-top:10px;
-        margin-bottom:-5px;
-    }
-    @media (max-width: 500px) {
-        line-height:100%;
-        font-size:4vw;
-        margin-top:10px;
-    }
-    @media (min-width: 1500px) {
-        font-size:22px;
-        margin-top:-10px;
-    }
-`
-
-export const ComingSoon = styled.h3`
-    font-weight: 600;
-    font-size:2vw;
-
-    @media (max-width: 800px) {
-        margin-top:20px;
-        font-size:4vw;
-    }
-    @media (max-width: 500px) {
-        line-height:100%;
-        font-size:5vw;
-    }
-    @media (min-width: 1500px) {
-        font-size:30px;
-    }
-`
-
-export const Star = styled.img`
-    float:top;
-    width: 84.49px;
-    height: 84.49px;
 `
 
 export const GradientText = styled.span`
@@ -225,4 +198,202 @@ export const GradientText = styled.span`
     -webkit-text-fill-color: transparent; 
     -moz-background-clip: text;
     -moz-text-fill-color: transparent;
+`
+
+export const Desc = styled.h3`
+    margin-top: 120px;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 30px;
+    letter-spacing: 0em;
+    text-align: left;
+
+    @media (max-width: 970px) {
+        margin-top: 100px;
+        font-size: 20px;
+        font-weight: 400;
+        line-height: 30px;
+        letter-spacing: 0em;
+        text-align: center;
+    }
+    @media (max-width: 500px) {
+        margin-top: 70px;
+        margin-left: 10%;
+        margin-right: 10%;
+        font-size: 20px;
+        font-weight: 400;
+        line-height: 30px;
+        letter-spacing: 0em;
+        text-align: center;
+    }
+`
+
+export const ImageContainer = styled.div`
+    margin-top: 100px;
+    margin-right: 30px;
+    position: relative;
+    height: 100%;
+
+    @media (max-width: 970px) {
+        margin-top: 80px;
+        margin-left: 25%;
+        margin-right: 10%;
+        position: relative;
+        height: 100%;
+    }
+    @media (max-width: 500px) {
+        margin-top: 50px;
+        margin-right: 10%;
+        margin-left: 10%;
+        position: relative;
+        height: 100%;
+    }
+`
+
+export const MainHeaderImage = styled.img`
+    margin: auto;
+    width: 463px;
+    height: 463px;
+    border-radius: 24px;
+    z-index: 2;
+
+    @media (max-width: 970px) {
+        margin: auto;
+        width: 463px;
+        height: 463px;
+        border-radius: 24px;
+        z-index: 2;
+    }
+    @media (max-width: 768px) {
+        margin: auto;
+        width: 299.17px;
+        height: 299.17px;
+        border-radius: 24px;
+        z-index: 2;
+    }
+`
+
+export const SecondHeaderImage = styled.img`
+    position: absolute;
+    width: 437.44px;
+    height: 437.44px;
+    top: -48.29px;
+    left: -79.62px;
+    border-radius: 24px;
+    opacity: 0.4;
+    z-index: -1;
+
+    @media (max-width: 970px) {
+        position: absolute;
+        width: 437.44px;
+        height: 437.44px;
+        top: -48.29px;
+        left: -79.62px;
+        border-radius: 24px;
+        opacity: 0.4;
+        z-index: -1;
+    }
+    @media (max-width: 768px) {
+        position: absolute;
+        width: 263px;
+        height: 263px;
+        top: -39.52px;
+        left: -31.37px;
+        border-radius: 24px;
+        opacity: 0.4;
+        z-index: -1;
+    }
+`
+
+export const ThirdHeaderImage = styled.img`
+    position: absolute;
+    width: 407.61px;
+    height: 407.61px;
+    top: 115.04px;
+    left: 103.79px;
+    border-radius: 24px;
+    opacity: 0.6;
+    z-index: -2;
+
+    @media (max-width: 970px) {
+        position: absolute;
+        width: 407.61px;
+        height: 407.61px;
+        top: 115.04px;
+        left: 103.79px;
+        border-radius: 24px;
+        opacity: 0.6;
+        z-index: -2;
+    }
+    @media (max-width: 768px) {
+        position: absolute;
+        width: 263px;
+        height: 263px;
+        top: 70.32px;
+        left: 80px;
+        border-radius: 24px;
+        opacity: 0.6;
+        z-index: -2;
+    }
+`
+
+export const ButtonRow = styled.div`
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    gap:24px;
+    padding-top: 1%;
+
+    @media (max-width: 970px) {
+        margin: auto;
+        padding-top: 0px;
+    }
+
+    @media (max-width: 500px) {
+        flex-direction: column;
+    }
+`
+
+export const ExploreButton = styled.button`
+    display: inline-flex;
+    background-color: ${color.primary};
+    color:${color.white};
+    width: 170px;
+    height:60px;
+    justify-content: center;
+    align-items: center;
+    border-radius:8px;
+    font-size:19px;
+    font-weight:400;
+    cursor:pointer;
+    border: none;
+    transition:all .1s ease-in-out;
+    &:hover{
+        background-color:${Hex2Rgba(color.white, .4)};
+    }
+    &:active{
+        background-color:${Hex2Rgba(color.white, .5)};
+    }
+`
+
+export const ApplyButton = styled.button`
+    display: inline-flex;
+    justify-content: center;
+    background-color: transparent;
+    color:${color.white};
+    border: 1px solid ${color.white};
+    width: 170px;
+    height:60px;
+    align-items:center;
+    border-radius:8px;
+    font-size:19px;
+    font-weight:400;
+    cursor:pointer;
+    transition:all .1s ease-in-out;
+    &:hover{
+        background-color:${Hex2Rgba(color.white, .4)};
+    }
+    &:active{
+        background-color:${Hex2Rgba(color.white, .5)};
+    }
 `

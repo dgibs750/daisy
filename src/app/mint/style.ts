@@ -51,7 +51,7 @@ export const BgBlue = styled.div`
     align-items:flex-start;
     overflow:hidden;
     border-radius: 555px;
-    background: rgba(5, 0, 255, .35);
+    background: rgba(5, 0, 255, .45);
     filter: blur(247px);
 
     & svg{
@@ -103,7 +103,7 @@ export const HeaderButtonContainer = styled.div`
 `
 
 export const Logo = styled.img`
-    width:147px;
+    width:200px;
 `
 
 export const WalletConnect = styled.button`
@@ -129,7 +129,7 @@ export const WalletConnect = styled.button`
 
 export const KadoButton = styled.button`
     width:100%;
-    margin-top: 7px;
+    margin-top: 20px;
     padding:16px 0;
     border-radius:8px;
     font-size:18px;
@@ -233,8 +233,15 @@ export const LaunchInfo = styled.div`
 `
 
 export const Title = styled.div`
-    font-size: 64px;
+    font-size: 52px;
     font-weight:700;
+
+    @media (max-width: 768px) {
+        font-size: 45px;
+    }
+    @media (max-width: 400px) {
+        font-size: 40px;
+    }
 `
 
 export const TitleMobile = styled.div`
@@ -288,14 +295,15 @@ export const TotalMintedProgress = styled.div<{ value: number }>`
 
 export const Headline = styled.h4`
     color:${color.white};
-    font-weight: bold;
-    margin-top:32px;
+    font-weight: 600;
+    margin-top:35px;
+    margin-bottom:0px;
 `
 
 export const Description = styled.div`
     color:${color.whiteShade};
-    font-size:14px;
-    margin-top:32px;
+    font-size:15px;
+    margin-top:20px;
 `
 
 export const Links = styled.div`
@@ -362,6 +370,11 @@ export const PhaseDate = styled.div`
 `
 
 export const PhaseBottom = styled.div`
+    display:flex;
+    justify-content:space-between;
+`
+
+export const PhaseBottomData = styled.div`
 
 `
 
@@ -369,9 +382,13 @@ export const PhaseBadge = styled.div`
     position:absolute;
     right:16px;
     padding:8px;
-    border-radius:8px;
-    background-color:${color.secondaryLight};
+    border-radius:4px;
+    background-color:${color.secondaryDark};
     font-size:12px;
+    color: #dad4d4;
+    top: 8px;
+    font-weight: 600;
+    letter-spacing: 0.35px;
 `
 
 export const MintBlock = styled.div`
@@ -489,7 +506,45 @@ export const AmountValue = styled.input`
       
 `
 
+export const ButtonDiv = styled.div`
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    gap:10px;
+`
+
 export const MintButton = styled.button`
+    width:100%;
+    padding:16px 0;
+    border-radius:8px;
+    background-color:${color.primary};
+    color:${color.white};
+    font-size:18px;
+    font-weight:500;
+    cursor:pointer;
+    transition:all .1s ease-in-out;
+    &:hover{
+        background-color:${Hex2Rgba(color.primary, .8)};
+    }
+    outline:none;
+    border:none;
+    margin-top:24px;
+
+    &:disabled{
+        background-color:${color.primary} !important;
+        cursor:default;
+    }
+
+    &:active{
+        outline:none;
+        border:none;
+        background-color:${Hex2Rgba(color.primary, .5)};
+    }
+`
+
+export const iseiMintButton = styled.button`
     width:100%;
     padding:16px 0;
     border-radius:8px;
