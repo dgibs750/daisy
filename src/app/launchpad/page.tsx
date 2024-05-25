@@ -67,7 +67,7 @@ const Launchpad = () => {
     };
 
     useEffect(() => {
-        if (hasPageBeenRendered.current['effect1']) {
+        // if (hasPageBeenRendered.current['effect1']) {
             db.getCurrentCollections()
                 .then((res: any) => {
                     setCurrentCollections(res[0]);
@@ -81,8 +81,8 @@ const Launchpad = () => {
                     setPastCollections(res[0]);
                 })
         }
-        hasPageBeenRendered.current['effect1'] = true;
-    }
+        // hasPageBeenRendered.current['effect1'] = true;
+    // }
         , [])
 
     const scroll = (ref: any, scrollOffset: number) => {

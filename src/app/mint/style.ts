@@ -235,6 +235,13 @@ export const LaunchInfo = styled.div`
 export const Title = styled.div`
     font-size: 52px;
     font-weight:700;
+
+    @media (max-width: 768px) {
+        font-size: 45px;
+    }
+    @media (max-width: 400px) {
+        font-size: 40px;
+    }
 `
 
 export const TitleMobile = styled.div`

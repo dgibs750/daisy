@@ -141,6 +141,13 @@ export const HeaderContainer = styled.div`
         height: 100vh;
         margin-bottom: 300px;   
     }
+
+    @media (max-height: 820px) {
+        margin-bottom: 175px;
+    }
+    @media (max-height: 745px) {
+        margin-bottom: 300px;
+    }
 `
 export const TitleContainer = styled.div`
     width: 60%;
@@ -334,8 +341,8 @@ export const ButtonRow = styled.div`
     display: flex;
     flex-direction: row;
     justify-content: start;
-    gap:16px;
-    padding-top: 5%;
+    gap:24px;
+    padding-top: 1%;
 
     @media (max-width: 970px) {
         margin: auto;
@@ -351,14 +358,15 @@ export const ExploreButton = styled.button`
     display: inline-flex;
     background-color: ${color.primary};
     color:${color.white};
-    width: 207px;
-    height:62px;
+    width: 170px;
+    height:60px;
     justify-content: center;
     align-items: center;
     border-radius:8px;
-    font-size:24px;
-    font-weight:500;
+    font-size:19px;
+    font-weight:400;
     cursor:pointer;
+    border: none;
     transition:all .1s ease-in-out;
     &:hover{
         background-color:${Hex2Rgba(color.white, .4)};
@@ -374,12 +382,12 @@ export const ApplyButton = styled.button`
     background-color: transparent;
     color:${color.white};
     border: 1px solid ${color.white};
-    width: 207px;
-    height:62px;
+    width: 170px;
+    height:60px;
     align-items:center;
     border-radius:8px;
-    font-size:24px;
-    font-weight:500;
+    font-size:19px;
+    font-weight:400;
     cursor:pointer;
     transition:all .1s ease-in-out;
     &:hover{

@@ -45,6 +45,7 @@ export const ApplyButton = styled.button`
     font-size:16px;
     font-weight:500;
     cursor:pointer;
+    border: none;
     transition:all .1s ease-in-out;
     &:hover{
         background-color:${Hex2Rgba(color.white, .4)};
@@ -55,7 +56,7 @@ export const ApplyButton = styled.button`
 `
 
 export const NavSelection = styled.h4`
-    font-weight: 600;
+    font-weight: 500;
     color:${color.white};
     &:hover{
         color:${color.primary};
