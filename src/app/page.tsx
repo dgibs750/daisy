@@ -40,7 +40,7 @@ const Home = () => {
                     <C.TitleContainer>
                         <C.Title><C.GradientText>For Creators,</C.GradientText></C.Title>
                         <C.Title>By Creators</C.Title>
-                        <C.Desc className={poppins.className}>The all-in-one no-code solution for projects on SEI</C.Desc>
+                        <C.Desc className={poppins.className}>The only all-in-one no-code solution for Creators</C.Desc>
                         <C.ButtonRow>
                             <Link href={'/launchpad'} style={{ textDecoration: 'none' }}>
                                 <C.ExploreButton>Explore</C.ExploreButton>

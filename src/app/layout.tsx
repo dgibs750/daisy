@@ -7,8 +7,8 @@ import NextTopLoader from 'nextjs-toploader';
 import { color } from "@/styles/theme";
 
 export const metadata: Metadata = {
-  title: "Daisy | Premium Tools for the SEI Network",
-  description: "Optimized projects from start to finish. The SEI Network's all-in-one solution.",
+  title: "Daisy | Premium Tools for Creators",
+  description: "Optimized projects from start to finish. The Ultimate No-Code Toolkit.",
 };
 
 export default function RootLayout({
