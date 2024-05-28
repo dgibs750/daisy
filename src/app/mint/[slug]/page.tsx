@@ -165,8 +165,8 @@ const MintPage = ({ params }: { params: { slug: string } }) => {
         let balance = await client.getBalance(wallet!.accounts[0].address, "usei")
         setBalance(new BigNumber(balance.amount).div(1e6).toString())
 
-        let iseiBalance = await client.getBalance(wallet!.accounts[0].address, "factory/sei1e3gttzq5e5k49f9f5gzvrl0rltlav65xu6p9xc0aj7e84lantdjqp7cncc/isei")
-        setIseiBalance(new BigNumber(balance.amount).div(1e6).toString())
+        let currentIseiBalance = await client.getBalance(wallet!.accounts[0].address, "factory/sei1e3gttzq5e5k49f9f5gzvrl0rltlav65xu6p9xc0aj7e84lantdjqp7cncc/isei")
+        setIseiBalance(new BigNumber(currentIseiBalance.amount).div(1e6).toString())
 
         client.queryContractSmart(config.contract, { balance_of: { address: wallet!.accounts[0].address, collection: config.collection_address } }).then((result) => {
             setMyMintedNfts(result.mints)
