@@ -49,7 +49,7 @@ const Footer = () => {
                             target="_blank"
                             style={{ textDecoration: 'none' }}    
                         >
-                            <C.Icon src="/images/twitter-x.svg" alt="Gitbook" />
+                            <C.Icon src="/images/twitter-x.svg" alt="Twitter" />
                         </Link>
                         <Link
                             href={'https://daisy-7.gitbook.io/daisy/'}
@@ -59,11 +59,11 @@ const Footer = () => {
                             <C.Icon src="/images/GitBook_-_Icon_-_Light.svg" alt="Gitbook" />
                         </Link>
                         <Link
-                            href={'https://discord.gg/JkT2WKJf'}
+                            href={'https://discord.gg/aVDAXQxBtG'}
                             target="_blank"
                             style={{ textDecoration: 'none' }}    
                         >
-                            <C.Icon src="/images/discord-mark-white.svg" alt="Gitbook" />
+                            <C.Icon src="/images/discord-mark-white.svg" alt="Discord" />
                         </Link>
                     </C.SocialIcons>
                 </C.Footer>
